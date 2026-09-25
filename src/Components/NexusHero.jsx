@@ -1,8 +1,14 @@
+import { useCopy } from "../hooks/useCopy";
+
+const CLI_COMMAND = "npx create-nexusflow-app@latest";
+
 const NexusHero = () => {
+  const [copied, copy] = useCopy();
+
   return (
     <section id="hero" className="relative pt-16 pb-20 md:pt-24 md:pb-28 overflow-hidden vercel-glow">
       {/* Grid pattern background */}
-      <div className="absolute inset-0 vercel-grid opacity-30 [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none"></div>
+      <div className="absolute inset-0 vercel-grid opacity-30 mask-[radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none"></div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
@@ -21,7 +27,7 @@ const NexusHero = () => {
         <div className="text-center max-w-4xl mx-auto mt-8 space-y-5">
           <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.08]">
             Develop with velocity. <br />
-            <span className="bg-gradient-to-b from-white via-neutral-200 to-neutral-500 bg-clip-text text-transparent">
+            <span className="bg-linear-to-b from-white via-neutral-200 to-neutral-500 bg-clip-text text-transparent">
               Automate with intelligence.
             </span>
           </h1>
@@ -37,28 +43,40 @@ const NexusHero = () => {
             <div className="w-full sm:w-auto flex-1 flex items-center justify-between gap-3 px-3.5 py-2.5 bg-[#0a0a0a] border border-neutral-800 rounded-lg text-xs font-mono text-neutral-300 shadow-inner">
               <div className="flex items-center gap-2 overflow-hidden">
                 <span className="text-neutral-500 select-none">~</span>
-                <span className="truncate">npx create-nexusflow-app@latest</span>
+                <span className="truncate">{CLI_COMMAND}</span>
               </div>
-              <button type="button" aria-label="Copy Command" className="p-1 hover:text-white text-neutral-400 transition-colors">
-                <img src="/icons/copy.svg" alt="Copy" className="w-4 h-4 invert" />
+              <button
+                type="button"
+                aria-label={copied ? "Copied" : "Copy command"}
+                onClick={() => copy(CLI_COMMAND)}
+                className="flex items-center gap-1.5 p-1 hover:text-white text-neutral-400 transition-colors"
+              >
+                {copied ? (
+                  <>
+                    <img src="/icons/check.svg" alt="" className="w-4 h-4 invert" />
+                    <span className="text-[11px] text-emerald-400" aria-live="polite">Copied!</span>
+                  </>
+                ) : (
+                  <img src="/icons/copy.svg" alt="" className="w-4 h-4 invert" />
+                )}
               </button>
             </div>
 
             {/* Primary CTA Button */}
             <a href="#pricing" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 text-xs font-medium text-black bg-white hover:bg-neutral-200 rounded-lg transition-colors font-mono whitespace-nowrap">
               <span>Start Free Trial</span>
-              <img src="/icons/arrow-right.svg" alt="" className="w-3 h-3 invert" />
+              <img src="/icons/arrow-right.svg" alt="" className="w-3 h-3" />
             </a>
           </div>
 
           {/* Social Proof Stats Mini Strip */}
           <div className="pt-6 flex items-center justify-center gap-4 text-xs font-mono text-neutral-500">
             <div className="flex -space-x-1.5">
-              <img className="w-6 h-6 rounded-full border border-black" src="/images/avatar-1.svg" alt="User 1" />
-              <img className="w-6 h-6 rounded-full border border-black" src="/images/avatar-2.svg" alt="User 2" />
-              <img className="w-6 h-6 rounded-full border border-black" src="/images/avatar-3.svg" alt="User 3" />
+              <img className="w-6 h-6 rounded-full border border-black" src="/images/avatar-1.svg" alt="" />
+              <img className="w-6 h-6 rounded-full border border-black" src="/images/avatar-2.svg" alt="" />
+              <img className="w-6 h-6 rounded-full border border-black" src="/images/avatar-3.svg" alt="" />
             </div>
-            <span>Trusted by 10,000+ teams shipping to production</span>
+            <span>Trusted by 10,000+ teams shipping to production*</span>
           </div>
 
         </div>
@@ -90,14 +108,14 @@ const NexusHero = () => {
               </div>
 
               <div className="space-y-1.5 text-neutral-400 pl-4 border-l border-neutral-800">
-                <div className="text-neutral-300"><span className="text-neutral-500">•</span> Building preview for branch <span className="text-white font-semibold">feat/ai-sprint-engine</span>...</div>
-                <div><span className="text-emerald-400">✓</span> Compiled 48 edge lambdas in 184ms</div>
-                <div><span className="text-emerald-400">✓</span> Automated PR analysis: 0 regression risks detected</div>
-                <div><span className="text-emerald-400">✓</span> Deployed to 32 global edge regions</div>
+                <div className="term-line text-neutral-300" style={{ "--delay": "300ms" }}><span className="text-neutral-500">•</span> Building preview for branch <span className="text-white font-semibold">feat/ai-sprint-engine</span>...</div>
+                <div className="term-line" style={{ "--delay": "1000ms" }}><span className="text-emerald-400">✓</span> Compiled 48 edge lambdas in 184ms</div>
+                <div className="term-line" style={{ "--delay": "1700ms" }}><span className="text-emerald-400">✓</span> Automated PR analysis: 0 regression risks detected</div>
+                <div className="term-line" style={{ "--delay": "2400ms" }}><span className="text-emerald-400">✓</span> Deployed to 32 global edge regions</div>
               </div>
 
               {/* Preview Card Box Inside Terminal */}
-              <div className="mt-4 p-4 rounded-lg border border-neutral-800 bg-[#111111] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+              <div className="term-line mt-4 p-4 rounded-lg border border-neutral-800 bg-[#111111] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4" style={{ "--delay": "3100ms" }}>
                 <div className="space-y-1">
                   <div className="text-xs text-neutral-400">Preview URL</div>
                   <div className="text-sm font-semibold text-white flex items-center gap-2">

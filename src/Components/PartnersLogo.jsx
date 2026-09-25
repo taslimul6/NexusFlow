@@ -1,6 +1,6 @@
 import { partnersLogo } from "../data/partnersLogo";
 
-const LogoCloud = () => {
+const PartnersLogo = () => {
   return (
     <section className="py-12 border-y border-neutral-800 bg-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -23,4 +23,4 @@ const LogoCloud = () => {
   );
 };
 
-export default LogoCloud;
+export default PartnersLogo;

@@ -1,8 +1,34 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { menuItems } from "../data/menu";
 
 const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeId, setActiveId] = useState("");
+
+  // Close the mobile drawer with Escape
+  useEffect(() => {
+    if (!isMenuOpen) return;
+    const onKey = (e) => e.key === "Escape" && setIsMenuOpen(false);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [isMenuOpen]);
+
+  // Highlight the nav link of the section currently in view
+  useEffect(() => {
+    const sections = menuItems
+      .map((item) => document.querySelector(item.href))
+      .filter(Boolean);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActiveId(`#${entry.target.id}`);
+        });
+      },
+      { rootMargin: "-40% 0px -55% 0px" },
+    );
+    sections.forEach((s) => observer.observe(s));
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-[#1f1f1f] bg-black/80 backdrop-blur-md transition-all">
@@ -12,7 +38,7 @@ const Nav = () => {
           {/* Brand Logo */}
           <a href="#hero" className="flex items-center gap-3 group">
             <div className="w-6 h-6 flex items-center justify-center text-white group-hover:opacity-80 transition-opacity">
-              <img src="/icons/logo.svg" alt="NexusFlow Logo" className="w-5 h-5 invert" />
+              <img src="/icons/logo.svg" alt="" className="w-5 h-5 invert" />
             </div>
             <span className="text-base font-semibold tracking-tight text-white">NexusFlow</span>
             <span className="hidden sm:inline-flex items-center px-2 py-0.5 text-[11px] font-mono font-medium text-neutral-400 bg-neutral-900 border border-neutral-800 rounded-md">
@@ -26,7 +52,10 @@ const Nav = () => {
               <a
                 key={item.id}
                 href={item.href}
-                className="text-neutral-400 hover:text-white transition-colors"
+                aria-current={activeId === item.href ? "true" : undefined}
+                className={`transition-colors hover:text-white ${
+                  activeId === item.href ? "text-white" : "text-neutral-400"
+                }`}
               >
                 {item.label}
               </a>
@@ -35,12 +64,12 @@ const Nav = () => {
 
           {/* Right CTA Actions */}
           <div className="hidden md:flex items-center gap-3">
-            <a href="#login" className="text-sm text-neutral-400 hover:text-white px-3 py-1.5 transition-colors">
+            <a href="#demo" className="text-sm text-neutral-400 hover:text-white px-3 py-1.5 transition-colors">
               Log In
             </a>
             <a href="#pricing" className="inline-flex items-center justify-center gap-1.5 px-4 py-1.5 text-sm font-medium text-black bg-white hover:bg-neutral-200 rounded-lg transition-colors">
               <span>Deploy Free</span>
-              <img src="/icons/arrow-right.svg" alt="" className="w-3.5 h-3.5 invert" />
+              <img src="/icons/arrow-right.svg" alt="" className="w-3.5 h-3.5" />
             </a>
           </div>
 
@@ -48,14 +77,15 @@ const Nav = () => {
           <div className="flex md:hidden">
             <button
               type="button"
-              aria-label="Toggle Navigation"
+              aria-label="Toggle navigation"
+              aria-expanded={isMenuOpen}
               onClick={() => setIsMenuOpen((prev) => !prev)}
               className="p-2 rounded-lg text-neutral-400 hover:text-white hover:bg-neutral-900 border border-neutral-800"
             >
               {isMenuOpen ? (
-                <img src="/icons/close.svg" alt="Close" className="w-5 h-5 invert" />
+                <img src="/icons/close.svg" alt=""className="w-5 h-5 invert" />
               ) : (
-                <img src="/icons/menu.svg" alt="Menu" className="w-5 h-5 invert" />
+                <img src="/icons/menu.svg" alt=""className="w-5 h-5 invert" />
               )}
             </button>
           </div>
@@ -77,12 +107,12 @@ const Nav = () => {
             </a>
           ))}
           <div className="pt-4 border-t border-neutral-800 flex flex-col gap-2">
-            <a href="#login" className="text-center py-2 text-sm text-neutral-300 bg-neutral-900 border border-neutral-800 rounded-lg">
+            <a href="#demo" className="text-center py-2 text-sm text-neutral-300 bg-neutral-900 border border-neutral-800 rounded-lg">
               Log In
             </a>
             <a href="#pricing" className="inline-flex items-center justify-center gap-1.5 text-center py-2 text-sm font-medium text-black bg-white rounded-lg">
               <span>Deploy Free</span>
-              <img src="/icons/arrow-right.svg" alt="" className="w-3.5 h-3.5 invert" />
+              <img src="/icons/arrow-right.svg" alt="" className="w-3.5 h-3.5" />
             </a>
           </div>
         </div>
