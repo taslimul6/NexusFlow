@@ -1,5 +1,6 @@
 import { features } from "../../data/features";
 import FeatureCard from "./FeatureCard";
+import Reveal from "../ui/Reveal";
 
 const Features = () => {
   return (
@@ -21,15 +22,16 @@ const Features = () => {
 
         {/* Feature Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-neutral-800 border border-neutral-800 rounded-xl overflow-hidden">
-          {features.map((feature) => (
-            <FeatureCard
-              key={feature.id}
-              icon={feature.icon}
-              number={feature.number}
-              category={feature.category}
-              title={feature.title}
-              description={feature.description}
-            />
+          {features.map((feature, index) => (
+            <Reveal key={feature.id} delay={(index % 3) * 100} className="bg-[#0a0a0a]">
+              <FeatureCard
+                icon={feature.icon}
+                number={feature.number}
+                category={feature.category}
+                title={feature.title}
+                description={feature.description}
+              />
+            </Reveal>
           ))}
         </div>
 

@@ -27,7 +27,7 @@ const SolutionSpotlight = ({
           <div className="space-y-3 pt-2 font-mono text-xs text-neutral-300">
             {bullets.map((bullet, index) => (
               <div key={index} className="flex items-center gap-3">
-                <img src="/icons/check.svg" alt="Check" className="w-4 h-4 invert" />
+                <img src="/icons/check.svg" alt="" className="w-4 h-4 invert" />
                 <span>{bullet}</span>
               </div>
             ))}
