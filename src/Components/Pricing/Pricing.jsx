@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { pricingPlans } from "../../data/pricing";
 import PricingCard from "./PricingCard";
+import Reveal from "../ui/Reveal";
 
 const Pricing = () => {
   const [isAnnual, setIsAnnual] = useState(false);
@@ -50,8 +51,12 @@ const Pricing = () => {
 
         {/* Pricing Cards Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
-          {pricingPlans.map((plan) => (
-            <PricingCard key={plan.id} plan={plan} isAnnual={isAnnual} />
+          {pricingPlans.map((plan, index) => (
+            <Reveal key={plan.id} delay={index * 120} className="flex">
+              <div className="flex w-full">
+                <PricingCard plan={plan} isAnnual={isAnnual} />
+              </div>
+            </Reveal>
           ))}
         </div>
 

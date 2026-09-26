@@ -14,7 +14,7 @@ export const pricingPlans = [
       "Community Support",
     ],
     ctaText: "Start Free",
-    ctaLink: "#deploy",
+    ctaLink: "#get-started",
   },
   {
     id: 2,
@@ -32,7 +32,7 @@ export const pricingPlans = [
       "Priority 24/7 SLA Support",
     ],
     ctaText: "Upgrade to Pro",
-    ctaLink: "#deploy",
+    ctaLink: "#get-started",
   },
   {
     id: 3,
@@ -49,6 +49,6 @@ export const pricingPlans = [
       "Dedicated Technical Architect",
     ],
     ctaText: "Contact Sales",
-    ctaLink: "#contact",
+    ctaLink: "#demo",
   },
 ];

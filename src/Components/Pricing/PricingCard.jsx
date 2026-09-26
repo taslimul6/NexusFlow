@@ -52,7 +52,7 @@ const PricingCard = ({ plan, isAnnual }) => {
         <img
           src="/icons/arrow-right.svg"
           alt=""
-          className={`w-3.5 h-3.5 invert ${featured ? "" : "opacity-70"}`}
+          className={`w-3.5 h-3.5 ${featured ? "" : "invert opacity-70"}`}
         />
       </a>
     </div>

@@ -5,7 +5,7 @@ const TestimonialCard = ({ quote, avatar, name, role }) => {
       <div className="flex items-center gap-3 pt-4 border-t border-neutral-900">
         <img
           src={avatar}
-          alt={name}
+          alt=""
           className="w-8 h-8 rounded-full border border-neutral-800"
         />
         <div>

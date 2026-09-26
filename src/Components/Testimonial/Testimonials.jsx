@@ -1,5 +1,6 @@
 import { testimonials } from "../../data/testimonials";
 import TestimonialCard from "./TestimonialCard";
+import Reveal from "../ui/Reveal";
 
 const Testimonials = () => {
   return (
@@ -21,14 +22,17 @@ const Testimonials = () => {
 
         {/* Testimonials Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {testimonials.map((testimonial) => (
-            <TestimonialCard
-              key={testimonial.id}
-              quote={testimonial.quote}
-              avatar={testimonial.avatar}
-              name={testimonial.name}
-              role={testimonial.role}
-            />
+          {testimonials.map((testimonial, index) => (
+            <Reveal key={testimonial.id} delay={index * 120} className="flex">
+              <div className="flex w-full">
+                <TestimonialCard
+                  quote={testimonial.quote}
+                  avatar={testimonial.avatar}
+                  name={testimonial.name}
+                  role={testimonial.role}
+                />
+              </div>
+            </Reveal>
           ))}
         </div>
 
