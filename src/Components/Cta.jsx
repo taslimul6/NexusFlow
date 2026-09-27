@@ -1,6 +1,6 @@
 const Cta = () => {
   return (
-    <section className="py-24 bg-black relative">
+    <section id="get-started" className="py-24 bg-black relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <div className="rounded-2xl border border-neutral-800 bg-[#0a0a0a] p-8 sm:p-16 text-center space-y-6 relative overflow-hidden">
@@ -24,11 +24,11 @@ const Cta = () => {
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-2.5 text-xs font-mono font-medium text-black bg-white hover:bg-neutral-200 rounded-lg transition-colors"
               >
                 <span>Deploy Free Now</span>
-                <img src="/icons/arrow-right.svg" alt="" className="w-3.5 h-3.5 invert" />
+                <img src="/icons/arrow-right.svg" alt="" className="w-3.5 h-3.5" />
               </a>
 
               <a
-                href="#contact"
+                href="#demo"
                 className="w-full sm:w-auto px-6 py-2.5 text-xs font-mono font-medium text-neutral-300 bg-black hover:bg-neutral-900 border border-neutral-800 rounded-lg transition-colors"
               >
                 Talk to Enterprise Team

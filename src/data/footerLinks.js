@@ -23,16 +23,16 @@ export const footerColumns = [
     id: 3,
     title: "Company",
     links: [
-      { id: 1, label: "About Us", href: "#about" },
-      { id: 2, label: "Careers", href: "#careers" },
-      { id: 3, label: "Security & Trust", href: "#security" },
-      { id: 4, label: "Contact", href: "#contact" },
+      { id: 1, label: "About Us", href: "#demo" },
+      { id: 2, label: "Careers", href: "#demo" },
+      { id: 3, label: "Security & Trust", href: "#demo" },
+      { id: 4, label: "Contact", href: "#demo" },
     ],
   },
 ];
 
 export const socialLinks = [
-  { id: 1, label: "GitHub", icon: "/icons/github.svg", href: "#github" },
-  { id: 2, label: "Twitter", icon: "/icons/twitter.svg", href: "#twitter" },
-  { id: 3, label: "Discord", icon: "/icons/discord.svg", href: "#discord" },
+  { id: 1, label: "GitHub", icon: "/icons/github.svg", href: "#demo" },
+  { id: 2, label: "Twitter", icon: "/icons/twitter.svg", href: "#demo" },
+  { id: 3, label: "Discord", icon: "/icons/discord.svg", href: "#demo" },
 ];

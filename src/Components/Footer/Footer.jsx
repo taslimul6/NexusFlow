@@ -11,7 +11,7 @@ const Footer = () => {
           {/* Column 1: Brand & Socials */}
           <div className="col-span-2 space-y-4">
             <div className="flex items-center gap-2 text-white">
-              <img src="/icons/logo.svg" alt="NexusFlow" className="w-5 h-5 invert" />
+              <img src="/icons/logo.svg" alt="" className="w-5 h-5 invert" />
               <span className="text-sm font-semibold">NexusFlow</span>
             </div>
             <p className="text-xs text-neutral-500 max-w-xs leading-relaxed">
@@ -27,7 +27,7 @@ const Footer = () => {
                 >
                   <img
                     src={social.icon}
-                    alt={social.label}
+                    alt=""
                     className="w-4 h-4 invert opacity-60 hover:opacity-100"
                   />
                 </a>
@@ -44,7 +44,12 @@ const Footer = () => {
 
         {/* Bottom Status & Copyright Bar */}
         <div className="mt-12 pt-8 border-t border-neutral-900 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-[11px] text-neutral-500">
-          <div>© 2026 NexusFlow Inc. All rights reserved.</div>
+          <div className="space-y-1 text-center sm:text-left">
+            <div>© 2026 NexusFlow. Portfolio demo project.</div>
+            <div className="text-neutral-600">
+              * NexusFlow is a fictional product — all brands, metrics and testimonials are placeholders.
+            </div>
+          </div>
 
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-1.5 text-emerald-400">
